@@ -1,0 +1,144 @@
+import EditItem from './EditItem';
+import ItemImage from './ItemImage';
+import Status from './Status';
+import { useAuth } from '../hooks/useAuth';
+import {
+    Button,
+    Grid,
+    Card,
+    CardActionArea,
+    CardActions,
+    CardContent,
+    CardMedia,
+    Container,
+    Dialog,
+    FormControl,
+    IconButton,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField,
+    Typography,
+} from '@material-ui/core';
+import { Add,
+    Close,
+    DeleteForever,
+    Favorite,
+    FavoriteBorder,
+    Remove,
+    WhatsApp
+} from '@material-ui/icons';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+
+const CartAttributes = (props) => {
+
+    const auth = useAuth();
+    const router = useRouter();
+
+    const { item } = props;
+
+    const [cartAttributes, setCartAttributes] = useState(() => {
+       const hash = auth.userAuthData.email + item.id;
+       const cartItems = auth.cartItems;
+
+       for(var i=0; i<cartItems.length; i++){
+         if(cartItems[i].hash === hash && cartItems[i].cartAttributes){
+               return {...cartItems[i].cartAttributes};
+         }
+       }
+    });
+
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState({
+        message: '',
+        error: ''
+    });
+
+    const handleChange = e => {
+        e.preventDefault();
+        const {name, value} = e.target;
+        setCartAttributes({ ...cartAttributes, [name]: value });
+    };
+
+    const updateCart = async(e) => {
+
+      e.preventDefault();
+
+      const email = auth.userAuthData.email;
+      const hash = email + id;
+      const { id, price } = item.price;
+      const record = { cartAttributes, email, hash, id, price };
+
+      setLoading(true);
+      await auth.updateCartItems(record)
+        .then(() => {
+          setStatus({ ...status, ['message']: 'Cart updated' });
+          setLoading(false);
+        }).catch(error => {
+          setStatus({ ...status, error });
+        });
+
+    }
+
+    return(
+        <form onSubmit={updateCart}>
+          <Grid container spacing={2}>
+
+            {item.varAttributes && Object.keys(item.varAttributes).map(key => (
+              <Grid item key={key} xs={6}>
+                <FormControl fullWidth margin="normal" required>
+                  <InputLabel id={`${key}Label`}>{key}</InputLabel>
+                  <Select
+                    id={`${key}Select`}
+                    labelId={`${key}Label`}
+                    name={key}
+                    onChange={handleChange}
+                    value={ cartAttributes[key] }
+                  >
+                    {item.varAttributes[key].map( i => (
+                        <MenuItem key={i} value={i}>{i}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+            ))}
+
+            <Grid item xs={6}>
+              <FormControl fullWidth margin="normal" required>
+                <InputLabel id="qtyLabel">Quantity</InputLabel>
+                <Select
+                  id="qtyId"
+                  labelId="qtyLabel"
+                  name="qty"
+                  onChange={handleChange}
+                  value={ cartAttributes['qty'] }
+                >
+                  {[0, 1, 2, 3, 4, 5].map(i => (
+                    <MenuItem key={i} value={i}> {i} </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+
+          </Grid>
+
+        <Status loading={loading} status={status}/>
+        <br/>
+        <small>Note: Setting quantity to 0 removes the item from cart.</small>
+        <br/><br/>
+        <Button
+          color="primary"
+          fullWidth
+          margin="normal"
+          type="submit"
+          variant="contained"
+        >
+          Update Cart
+        </Button>
+      </form>
+    )
+}
+
+export default CartAttributes;
