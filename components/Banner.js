@@ -32,7 +32,7 @@ const Banner = () => {
 
     return (
           <Box className='banner'  style={{border:"2px solid red"}}>
-            ffjfghfhfg
+            
               <Grid container>
                   <Grid item xs={12} sm={12} style={{height:'100vh'}}>
                     <Card style={{ backgroundColor: `${process.env.NEXT_PUBLIC_THEME_COLOR}`, color: `${auth.themeBgColor}` ,minHeight:'500px'}}>
@@ -41,7 +41,7 @@ const Banner = () => {
                           <CardMedia
                             component="img"
                             alt={ process.env.NEXT_PUBLIC_COMPANY_NAME }
-                            image={ process.env.NEXT_PUBLIC_COMPANY_BANNER_URL ||
+                            image={ `https://media.istockphoto.com/photos/artificial-intelligence-and-communication-network-concept-picture-id1297832728?b=1&k=20&m=1297832728&s=170667a&w=0&h=6kLz5QqY7DihAzzznA_hcMy8MxhtdNPkgeVu-gLETog` ||
                               `https://source.unsplash.com/featured/?${process.env.NEXT_PUBLIC_UNSPLASH_BANNER_TAG}`
                             }
                             title={ process.env.NEXT_PUBLIC_COMPANY_NAME }

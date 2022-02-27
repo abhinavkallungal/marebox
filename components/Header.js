@@ -97,7 +97,7 @@ const Header = () => {
   },[isChecked, s, searchCategory])
 
   return (
-    <AppBar style={{ backgroundColor: `${process.env.NEXT_PUBLIC_THEME_COLOR}`, padding: `0.5px 30px`}}>
+    <AppBar style={{ backgroundColor:'#2E3E6F', padding: `0.5px 30px`}}>
 
         <Grid
           alignItems="center"
@@ -114,7 +114,7 @@ const Header = () => {
               <Link href="/"><a>
                   <img
                     src={process.env.NEXT_PUBLIC_COMPANY_LOGO_URL}
-                    style={{backgroundColor: `${linkColor['home'] || process.env.NEXT_PUBLIC_THEME_COLOR}`, borderRadius: `50%`}}
+                    style={{ borderRadius: `50%`}}
                     alt="Logo"
                     width={35}
                     height={35}

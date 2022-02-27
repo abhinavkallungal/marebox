@@ -1,0 +1,24 @@
+.imgwrapper{
+    width: 100%;
+    display: flex;
+    height: auto;
+    justify-content: center;
+    
+
+}
+.img{
+    object-fit: contain;
+    width: 85%;
+    height: auto;
+    max-height: 500px;
+    border-radius: 8px;
+
+  
+
+}
+
+.heading{
+   color: #2E3E6F;
+   font-size: 24px;
+   font-weight: bold;
+}

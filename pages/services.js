@@ -2,16 +2,10 @@ import Services from '../components/Services';
 import ServiceSummary from '../components/ServiceSummary';
 import { useAuth } from '../hooks/useAuth';
 import homePageSections from '../vars/homePageSections';
-import {
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
-} from '@material-ui/core';
+import {Box} from '@material-ui/core';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { Grid, Typography } from '@mui/material';
 
 const ServicesPage = () => {
 
@@ -28,16 +22,21 @@ const ServicesPage = () => {
         temp.push(s);
       }
     });
+    console.log(homePageSections.services);
     setService(homePageSections.services);
     setServices([...temp]);
   }, [state, router]);
 
 
   return(
-    <Box style={{backgroundColor: `${state.themeBgColor}`}}>
+    <Grid style={{backgroundColor: `${state.themeBgColor}`,maxWidth:"1260px",margin:"0px auto",minHeight:"100vh"}}>
+  
       { service.name && <ServiceSummary service={service} /> }
+      <Typography variant='h4' >
+         Related services
+      </Typography>
       { services && <Services services={services} /> }
-    </Box>
+    </Grid>
   )
 };
 

@@ -2,7 +2,7 @@ import EachService from '../../components/EachService';
 import Services from '../../components/Services';
 import ServiceSummary from '../../components/ServiceSummary';
 import { useAuth } from '../../hooks/useAuth';
-import { Box } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -48,10 +48,11 @@ const Service = () => {
 
 
   return (
-    <Box style={{backgroundColor: `${state.themeBgColor}`}}>
+   <Grid style={{backgroundColor: `${state.themeBgColor}`,maxWidth:"1260px",margin:"0px auto",minHeight:"100vh"}}>
+    
       { service.name && <ServiceSummary service={ service } /> }
       { services && <Services services={ services } /> }
-    </Box>
+    </Grid>
   )
 
 };

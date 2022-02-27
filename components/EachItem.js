@@ -34,6 +34,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Markdown from 'markdown-to-jsx';
+import ProducrCard from './ProductCard';
 
 const EachItem = (props) => {
     const state = useAuth();
@@ -82,117 +83,121 @@ const EachItem = (props) => {
     return(
       <>
         {item && item.imgURL && (
-          <Grid item key={item.id} xs={props.xsSize} sm={props.smSize}>
-            <Card
-                className={classes.card}
-                style={{
-                    height: `${ props.fullScreen ? "100%" : "300" }`
-                }}
-            >
-              <CardActionArea>
-                <div style={{ textAlign: `center` }}>
-                  <ItemImage item={item} mediaHt={props.mediaHt || props.fullScreen ? "50%" : "200"}/>
-                </div>
-              </CardActionArea>
-              <CardContent style={{backgroundColor: `${state.themeBgColor}`}}>
-                  <Grid container justify="space-between">
-                      <Grid item xs={10}>
-                          <Typography>
-                              {item.name}
-                          </Typography>
-                      </Grid>
-                      { (state.userAuthData && (state.userAuthData.email === process.env.NEXT_PUBLIC_ADMIN) )? (
-                      <Grid item xs={2}>
-                          {fav
-                              ? <Favorite
-                                    style={{ color: process.env.NEXT_PUBLIC_THEME_COLOR }}
-                                    onClick={handleFavorite}
-                              />
-                              : <FavoriteBorder
-                                  onClick={handleFavorite}
-                                  style={{ color: process.env.NEXT_PUBLIC_THEME_COLOR }}
-                              />
-                          }
-                      </Grid>
-                      ) : <></> }
-                  </Grid>
-                  <Grid container justify="space-between">
-                      { item.price > 0 ? (
-                      <Grid item>
-                          <Typography variant="body1">
-                              Rs. { item.price }
-                          </Typography>
-                          { item.mrp &&
-                              item.mrp > item.price ? (
-                                <Typography style={{ textDecoration: `line-through` }} variant="body2">
-                                    Rs. { item.mrp }
-                                </Typography>
-                             ) : <></>
-                          }
-                      </Grid>
-                      ) : (
-                      <Grid item>
-                        <a
-                          href={`https://api.whatsapp.com/send?phone=${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}&text='please send quote for ${item.name} at https://marebox.co.in/item/${item.id}'`}
-                          target="_blank"
-                        >
-                          <Button color="primary"> Get Quote </Button>
-                        </a>
-                      </Grid>
-                      )}
-                      <Grid item>
-                          { state.userAuthData && (state.userAuthData.email === process.env.NEXT_PUBLIC_ADMIN) && (
-                              <>
-                                  <EditItem item={item}/>
-                                  <DeleteForever color="disabled" onClick={deleteItem} style={{ color: `orange` }}/>
-                              </>
-                          )}
-                      </Grid>
-                  </Grid>
-              </CardContent>
-              {props.fullScreen &&
-              <CardContent>
-              <Typography gutterBottom>
-                <Markdown>
-                  { item.description }
-                </Markdown>
-              </Typography>
-              <br/>
-                  <Grid container spacing={2}>
-                  {item.attributes && Object.keys(item.attributes).map(key => (
-                      <Grid item key={key} xs={6}>
-                        <TextField
-                          fullWidth
-                          inputProps={{
-	                            style: { color: `${state.themeColor}` },
-                          }}
-                          InputLabelProps={{
-                            className: classes.label
-                          }}
-                          label={key}
-                          readOnly
-                          value={item.attributes[key]}
-                        />
-                      </Grid>
-                  ))}
-                  </Grid>
-                  { item.price > 0 && (
-                    <>
-                  { state.userAuthData
-                    ? <CartAttributes item={item}/>
-                    : (
-                      <Link href="/signin"><a>
-                        <Button color="primary"> Sign in to Buy </Button>
-                      </a></Link>
-                    )
-                  }
-                    </>
-                  )}
+          <ProducrCard item={item}/>
 
-              </CardContent>
-              }
-            </Card>
-          </Grid>
+
+
+          // <Grid item key={item.id} xs={props.xsSize} sm={props.smSize}>
+          //   <Card
+          //       className={classes.card}
+          //       style={{
+          //           height: `${ props.fullScreen ? "100%" : "300" }`
+          //       }}
+          //   >
+          //     <CardActionArea>
+          //       <div style={{ textAlign: `center` }}>
+          //         <ItemImage item={item} mediaHt={props.mediaHt || props.fullScreen ? "50%" : "200"}/>
+          //       </div>
+          //     </CardActionArea>
+          //     <CardContent style={{backgroundColor: `${state.themeBgColor}`}}>
+          //         <Grid container justify="space-between">
+          //             <Grid item xs={10}>
+          //                 <Typography>
+          //                     {item.name}
+          //                 </Typography>
+          //             </Grid>
+          //             { (state.userAuthData && (state.userAuthData.email === process.env.NEXT_PUBLIC_ADMIN) )? (
+          //             <Grid item xs={2}>
+          //                 {fav
+          //                     ? <Favorite
+          //                           style={{ color: process.env.NEXT_PUBLIC_THEME_COLOR }}
+          //                           onClick={handleFavorite}
+          //                     />
+          //                     : <FavoriteBorder
+          //                         onClick={handleFavorite}
+          //                         style={{ color: process.env.NEXT_PUBLIC_THEME_COLOR }}
+          //                     />
+          //                 }
+          //             </Grid>
+          //             ) : <></> }
+          //         </Grid>
+          //         <Grid container justify="space-between">
+          //             { item.price > 0 ? (
+          //             <Grid item>
+          //                 <Typography variant="body1">
+          //                     Rs. { item.price }
+          //                 </Typography>
+          //                 { item.mrp &&
+          //                     item.mrp > item.price ? (
+          //                       <Typography style={{ textDecoration: `line-through` }} variant="body2">
+          //                           Rs. { item.mrp }
+          //                       </Typography>
+          //                    ) : <></>
+          //                 }
+          //             </Grid>
+          //             ) : (
+          //             <Grid item>
+          //               <a
+          //                 href={`https://api.whatsapp.com/send?phone=${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}&text='please send quote for ${item.name} at https://marebox.co.in/item/${item.id}'`}
+          //                 target="_blank"
+          //               >
+          //                 <Button color="primary"> Get Quote </Button>
+          //               </a>
+          //             </Grid>
+          //             )}
+          //             <Grid item>
+          //                 { state.userAuthData && (state.userAuthData.email === process.env.NEXT_PUBLIC_ADMIN) && (
+          //                     <>
+          //                         <EditItem item={item}/>
+          //                         <DeleteForever color="disabled" onClick={deleteItem} style={{ color: `orange` }}/>
+          //                     </>
+          //                 )}
+          //             </Grid>
+          //         </Grid>
+          //     </CardContent>
+          //     {props.fullScreen &&
+          //     <CardContent>
+          //     <Typography gutterBottom>
+          //       <Markdown>
+          //         { item.description }
+          //       </Markdown>
+          //     </Typography>
+          //     <br/>
+          //         <Grid container spacing={2}>
+          //         {item.attributes && Object.keys(item.attributes).map(key => (
+          //             <Grid item key={key} xs={6}>
+          //               <TextField
+          //                 fullWidth
+          //                 inputProps={{
+	        //                     style: { color: `${state.themeColor}` },
+          //                 }}
+          //                 InputLabelProps={{
+          //                   className: classes.label
+          //                 }}
+          //                 label={key}
+          //                 readOnly
+          //                 value={item.attributes[key]}
+          //               />
+          //             </Grid>
+          //         ))}
+          //         </Grid>
+          //         { item.price > 0 && (
+          //           <>
+          //         { state.userAuthData
+          //           ? <CartAttributes item={item}/>
+          //           : (
+          //             <Link href="/signin"><a>
+          //               <Button color="primary"> Sign in to Buy </Button>
+          //             </a></Link>
+          //           )
+          //         }
+          //           </>
+          //         )}
+
+          //     </CardContent>
+          //     }
+          //   </Card>
+          // </Grid>
       )}
       </>
     )

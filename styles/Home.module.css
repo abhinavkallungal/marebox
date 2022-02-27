@@ -1,5 +1,5 @@
 .container {
-  min-height: 100vh;
+ 
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
@@ -148,4 +148,19 @@
       margin-bottom: 16px;
   }
 
+  .bannerIcon{
+    color: #dc004e;
+    border: 1px solid red;
+    font-size: 50px;
+    width: 60px;
+  }
+
+
+  .iconWrapper{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid green;
+  }
 

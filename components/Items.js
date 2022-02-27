@@ -34,23 +34,32 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import ProducrCard from './ProductCard';
 
 const Items = ({items, title}) => {
   const router = useRouter();
   const auth = useAuth();
   //const [ items, setItems ] = useState([]);
   const [ refresh, setRefresh ] = useState(false);
+  console.log(items);
 
   return (
-    <div>
+    <div style={{margin:"30px 5%"}}>
+     
       { title && (
         <Typography gutterBottom style={{color: `${process.env.NEXT_PUBLIC_THEME_COLOR}` }} variant="h6">
           Items <small>({items.length})</small>
         </Typography>
       )}
       <Grid container spacing={2}>
+  
+    
+        
           {items.map(item => (
+            <>
+           
             <EachItem fullScreen={false} item={item} key={item.id} smSize={3} xsSize={6}/>
+            </>
           ))}
       </Grid>
     </div>

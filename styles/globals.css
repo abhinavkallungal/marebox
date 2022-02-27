@@ -35,6 +35,8 @@ a {
   height: 270px;
   position: relative;
   border-radius: 25px;
+  box-shadow: 0 10px 14px 0 rgb(37 44 65 / 12%) !important;  
+
   
 
 }
@@ -81,22 +83,96 @@ right: 0;
 width: 100%;
 color: #f1f1f1;
 padding: 10px;
+overflow: hidden;
+word-wrap: break-word;
 
 
 }
 
 
+.product-card{
+  height: 400px;
+  position: relative;
+  border-radius: 10px !important;
+  border: .5px solid #efefee;
+  
+ 
+  box-shadow: 0 10px 14px 0 rgb(37 44 65 / 12%) !important;  
 
-.cardShadow{
+}
+
+.product-card:hover .product-card-image {
+  transform: scale(1.1);
+
+}
+
+.product-card:hover {
+  cursor: pointer;
+
+}
+
+.product-card::before{
   content: '';
   position: absolute;
+  top: 0;
   left: 0;
-  bottom: 0;
+  bottom: 130px;
   right: 0;
   top: 30%;
   background: linear-gradient(to bottom, rgba(6,27,65,0) 0%,rgba(6,27,65,0.95) 100%);
   z-index: 2;
 }
+
+
+
+.product-card-image{
+  position: absolute;
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+transition: all 2000ms cubic-bezier(.19,1,.22,1) 0ms; 
+
+
+}
+.product-card-content{
+z-index: 10 ;
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+width: 100%;
+color: #576984;
+padding: 10px;
+overflow: hidden;
+word-wrap: break-word;
+background-color: #fff;
+height: 150px;
+border-radius:  15px 15px 0px 0px;
+
+
+}
+
+
+.title{
+  width: 100%;
+  text-align: center;
+  color: #697891;
+  font-size: 34px;
+  font-weight: 800;
+ 
+}
+
+.title-sub{
+  width: 100%;
+  text-align: center;
+  color: #697891;
+  margin-bottom: 40px;
+ 
+}
+
+
+
+
 
 .header-sec-link {
   position: absolute;
@@ -104,9 +180,13 @@ padding: 10px;
   right: 0;
   z-index: 10;
   bottom: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+ 
 }
 
-.header-sec-link a {
+.header-sec-link  {
   position: absolute;
   left: 50%;
   width: 220px;
@@ -129,4 +209,28 @@ padding: 10px;
   top: 25px;
   left: 0;
   z-index: -1;
+  
+}
+
+
+
+.serchItem{
+  border-right: 5px solid #eee;
+}
+.serchItemInput{
+  border-right: 5px solid #eee;
+}
+
+@media only  screen and (max-width:1280px) {
+  .serchItemInput{
+    border-right: 0px;
+    border-bottom: 5px solid #eee;
+  }
+}
+
+@media only  screen and (max-width:600px) {
+  .serchItem{
+    border-right: 0px;
+    border-bottom: 5px solid #eee;
+  }
 }

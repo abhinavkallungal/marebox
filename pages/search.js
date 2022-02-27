@@ -82,6 +82,7 @@ const Search = () => {
               }}
               
             >
+              
               { items.length > 0 && <Items items={items}/> }
               { listings.length > 0  && <Listings listings={listings}/> }
             </div>

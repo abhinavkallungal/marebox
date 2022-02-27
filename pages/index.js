@@ -6,8 +6,8 @@ import SearchComponent from '../components/SearchComponent';
 
 import { useAuth } from '../hooks/useAuth'
 import homePageSections from '../vars/homePageSections';
-import { Card, CardActionArea, CardContent, CardMedia, Container, Grid, Typography } from '@material-ui/core'
-import { Close, DeleteForever, KeyboardArrowUp } from '@material-ui/icons'
+import { Button, Card, CardActionArea, CardContent, CardMedia, Container, Grid, Typography } from '@material-ui/core'
+import { ArrowForwardIos } from '@material-ui/icons'
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -52,7 +52,11 @@ const Home = () => {
       <Grid container
         spacing={2}
         style={{ padding: `15px` ,margin:"20px auto"}}
+      
       > 
+
+            <Typography className='title' variant="h3">Categories</Typography>
+          <Typography  variant="subtitle1" className='title-sub'  > Colors with Hex & RGB Codes has 6 colors </Typography>
 
 
         {Object.values(homePageSections).map(homePageSection => (
@@ -84,21 +88,38 @@ const Home = () => {
           </Grid>
         ))}
       </Grid>
-      
+    
 
 
 
       {listings && (
-        <div style={{ padding: `10px` }}>
-          <Typography style={{ color: `hotpink` }} variant="h5">New Listings:</Typography>
+        <div style={{ padding: `50px` }} >
+          <Typography className='title' variant="h3">New Listings</Typography>
+          <Typography className='title-sub' variant="subtitle1"> Colors with Hex & RGB Codes has 6 colors </Typography>
           <Listings listings={listings} />
+          <div style={{height:'100px' ,display:'flex',alignItems:"center",justifyContent:"center"}}>
+            <Button variant='contained' style={{backgroundColor:"#2E3E6F",color:"#ffffff",border:'5px solid #eee'}} endIcon={<ArrowForwardIos/>}>
+                Checkout all listings
+            </Button>
+
+          </div>
         </div>
       )}
 
       {items && (
-        <div style={{ padding: `10px` }}>
-          <Typography style={{ color: `hotpink` }} variant="h5">New Items:</Typography>
+        <div style={{ padding: `50px`,  }}>
+       
+          <Typography className='title' variant="h3">New Items</Typography>
+          <Typography  variant="subtitle1" className='title-sub'> Colors with Hex & RGB Codes has 6 colors </Typography>
           <Items items={items} />
+
+          <div style={{height:'100px' ,display:'flex',alignItems:"center",justifyContent:"center"}}>
+            <Button variant='contained' style={{backgroundColor:"#2E3E6F",color:"#ffffff",border:'5px solid #eee'}} endIcon={<ArrowForwardIos/>}>
+                Checkout all Items
+            </Button>
+
+          </div>
+
         </div>
       )}
     </div>

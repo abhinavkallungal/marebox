@@ -105,8 +105,12 @@ const EachListing = (props) => {
         }
     },[]);
 
+    alert()
+
     return(
       <>
+      
+  
         {listing && (listing.verifiedByAdmin || (state.userAuthData && (state.userAuthData.email === process.env.NEXT_PUBLIC_ADMIN) )) &&(
           <Grid item key={listing.id} xs={props.xsSize} sm={props.smSize}>
             <Card

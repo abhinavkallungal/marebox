@@ -35,10 +35,11 @@ const Kb = () => {
 
 
   return(
-    <Box style={{backgroundColor: `${state.themeBgColor}`}}>
+    <Grid style={{backgroundColor: `${state.themeBgColor}`,maxWidth:"1260px",margin:"30px auto",minHeight:"100vh"}}>
+
       { service.name && <ServiceSummary service={service} /> }
       { services && <Services services={services} /> }
-    </Box>
+    </Grid>
   )
 };
 

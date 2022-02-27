@@ -1,0 +1,48 @@
+.ProductDetailes{
+
+
+   max-width: 100vw;
+    min-height: 100vh;
+    
+}
+
+.container{
+    min-height: 80vh;
+}
+.imgwrapper{
+    width: 100%;
+    display: flex;
+    height: auto;
+    justify-content: center;
+    
+
+}
+.img{
+    object-fit: contain;
+    width: 85%;
+    height: auto;
+    max-height: 500px;
+    border-radius: 8px;
+
+  
+
+}
+.productName{
+    color:#2E3E6F ;
+    font-size: 26px;
+    font-weight: bold;
+    margin: 10px 0px;
+}
+.productDiscription{
+    margin: 10px 0px;
+    color: #111;
+    max-width: 600px;
+    font-size: 18px;
+
+}
+.path{
+    color: black !important;
+    font-size: 12px;
+    border: 1px solid red;
+    
+}
