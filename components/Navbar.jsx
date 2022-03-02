@@ -231,16 +231,16 @@ const ToolbarComponent = (props) => {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Button aria-label="show 4 new mails" color="inherit">
-            Directory
+            <Link href="/directory"><a>Directory</a></Link>
             </Button>
             <Button aria-label="show 4 new mails" color="inherit">
-            Shop
+            <Link href="/shop"><a>Shop</a></Link>
             </Button>
             <Button aria-label="show 4 new mails" color="inherit">
-            Service
+            <Link href="/services"><a>Services</a></Link>
             </Button>
             <Button aria-label="show 4 new mails" color="inherit">
-            Knowledge Base
+            <Link href="/kb"><a>Knowledge Base</a></Link>
             </Button>
             
             <IconButton>
@@ -249,7 +249,7 @@ const ToolbarComponent = (props) => {
                 </Badge>
             </IconButton>
             <Button aria-label="show 4 new mails" color="inherit">
-            Login
+            <Link href="/login"><a>Log in</a></Link>
             </Button>
           
           </div>

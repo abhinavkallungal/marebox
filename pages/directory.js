@@ -1,14 +1,13 @@
-import Categories from '../components/Categories';
-import Listings from '../components/Listings';
+
 import DirCategories from '../components/DirCategories';
 import { useAuth } from '../hooks/useAuth'
-import { Card, CardActionArea, CardContent, CardMedia, Container, Dialog, Grid, Typography } from '@material-ui/core'
+import {  Typography ,Grid} from '@material-ui/core'
 import { Close, DeleteForever, KeyboardArrowUp } from '@material-ui/icons'
-import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Directory from '../components/Directory';
+import DirectoryCard from "../components/DirectoryCard"
 
 const Home = () => {
 
@@ -39,7 +38,7 @@ const Home = () => {
 
     return (
         <>
-            {/* <div
+         <div
               style={{
                 backgroundColor: `${state.themeBgColor}`,
                 padding: `20px`
@@ -47,7 +46,7 @@ const Home = () => {
             >
 
               <Typography gutterBottom style={{color: `${process.env.NEXT_PUBLIC_THEME_COLOR}` }} variant="h5">
-                <Link href="/"><a> {process.env.NEXT_PUBLIC_COMPANY_NAME || 'Home'} </a></Link> > <Link href="/directory"><a> Directory </a></Link>
+                <Link href="/"><a> {process.env.NEXT_PUBLIC_COMPANY_NAME || 'Home'} </a></Link>  <Link href="/directory"><a> Directory </a></Link>
               </Typography>
 
                 {process.env.NEXT_PUBLIC_NEED_DIR && (categories.length > 0) && (
@@ -57,11 +56,20 @@ const Home = () => {
                       </div>
                   </>
                 )}
+                <Grid container>
 
-              <Listings listings={listings}/>
+
+              <DirectoryCard/>
+              <DirectoryCard/>
+              <DirectoryCard/>
+              <DirectoryCard/>
+              <DirectoryCard/>
+              <DirectoryCard/>
+              <DirectoryCard/>
+                </Grid>
             </div>
-          */}
-          <Directory/>
+          
+     
         </> 
     )
 }
