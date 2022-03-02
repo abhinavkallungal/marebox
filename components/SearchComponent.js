@@ -1,5 +1,5 @@
 import { useAuth } from '../hooks/useAuth';
-import Link from 'next/Link'
+import Link from 'next/link'
 
 import { Grid } from '@material-ui/core';
 
