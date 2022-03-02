@@ -8,6 +8,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import Directory from '../components/Directory';
 
 const Home = () => {
 
@@ -38,7 +39,7 @@ const Home = () => {
 
     return (
         <>
-            <div
+            {/* <div
               style={{
                 backgroundColor: `${state.themeBgColor}`,
                 padding: `20px`
@@ -59,7 +60,9 @@ const Home = () => {
 
               <Listings listings={listings}/>
             </div>
-        </>
+          */}
+          <Directory/>
+        </> 
     )
 }
 

@@ -1,4 +1,5 @@
 import { useAuth } from '../hooks/useAuth';
+import Link from 'next/Link'
 
 import { Grid } from '@material-ui/core';
 
@@ -15,7 +16,7 @@ import {
 } from '@material-ui/core';
 import {
   Business,
-  HomeWorkRounded,  
+  HomeWorkRounded,
   Search,
   ShoppingBasket,
   ArrowDropDown
@@ -26,6 +27,7 @@ import {
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { border, maxWidth } from '@mui/system';
+import { IconButton } from '@mui/material';
 
 
 const SearchComponent = () => {
@@ -63,24 +65,28 @@ const SearchComponent = () => {
 
   return (
     <>
-      <Grid style={{ background:`url(https://media.istockphoto.com/photos/artificial-intelligence-and-communication-network-concept-picture-id1297832728?b=1&k=20&m=1297832728&s=170667a&w=0&h=6kLz5QqY7DihAzzznA_hcMy8MxhtdNPkgeVu-gLETog=)`, height: '91.2vh',objectFit:'cover', width:"100%", 
-      backgroundRepeat:"no-repeat",backgroundSize:"cover",backgroundPosition:"center center" }} >
-        <Grid  style={{ display: 'flex', flexDirection: 'column',height:"100%", width: "80%", justifyContent: "space-evenly",
-         alignItems:"center",margin:" 0 auto" }}   lg={{ flexDirection: 'row' }}>
+      <Grid style={{
+        background: `url(https://media.istockphoto.com/photos/artificial-intelligence-and-communication-network-concept-picture-id1297832728?b=1&k=20&m=1297832728&s=170667a&w=0&h=6kLz5QqY7DihAzzznA_hcMy8MxhtdNPkgeVu-gLETog=)`, height: '91.2vh', objectFit: 'cover', width: "100%",
+        backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center center"
+      }} >
+        <Grid style={{
+          display: 'flex', flexDirection: 'column', height: "100%", width: "80%", justifyContent: "space-evenly",
+          alignItems: "center", margin: " 0 auto"
+        }} lg={{ flexDirection: 'row' }}>
 
           <div>
-            <Typography variant='h3' style={{color:"#ffffff",fontWeight:'bold',textShadow:" 2px 2px 4px #000000",textAlign:"center"}}>
+            <Typography variant='h4' style={{ color: "#ffffff", fontWeight: 'bold', textShadow: " 2px 2px 4px #000000", textAlign: "center" }}>
               All Construction Services In One Touch
             </Typography>
-            <Typography variant='subtitle1' style={{color:"#ffffff",fontWeight:'bold',textShadow:" 2px 2px 4px #000000",textAlign:"center"}}>
-             Business To Business ,Business To Customer
+            <Typography variant='subtitle1' style={{ color: "#ffffff", fontWeight: 'bold', textShadow: " 2px 2px 4px #000000", textAlign: "center" }}>
+              Business To Business ,Business To Customer
             </Typography>
           </div>
-          <Grid  container style={{maxWidth:"900px",backgroundColor:"#ffffff",borderRadius:"8px",border:"5px solid #00000010"}}>
-            <Grid item xs={12} sm={12}    md={12} lg={4} style={{padding:"20px"}} className="serchItemInput" >
+          <Grid container style={{ maxWidth: "900px", backgroundColor: "#ffffff", borderRadius: "8px", border: "5px solid #00000010" }}>
+            <Grid item xs={12} sm={12} md={12} lg={4} style={{ padding: "20px" }} className="serchItemInput" >
               <div style={{ display: "flex", alignItems: "center" }} >
                 <Search />
-           
+
                 <InputBase
                   autoComplete="s"
                   id="s"
@@ -96,27 +102,27 @@ const SearchComponent = () => {
                 />
               </div>
             </Grid>
-            <Grid item xs={12} sm={6}    md={6} lg={4}  style={{padding:"20px"}} className="serchItem">
+            <Grid item xs={12} sm={6} md={6} lg={4} style={{ padding: "20px" }} className="serchItem">
 
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={isChecked}
-                      onChange={handleCheck}
-                      color="primary"
-                    />
-                  }
-                  label="OR Search"
-                />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={isChecked}
+                    onChange={handleCheck}
+                    color="primary"
+                  />
+                }
+                label="OR Search"
+              />
 
-              
+
             </Grid>
 
-            <Grid item xs={12} sm={6}    md={6} lg={4} style={{padding:"20px 10px"}} >
-              <div style={{display:"flex"}}>
+            <Grid item xs={12} sm={6} md={6} lg={4} style={{ padding: "20px 10px" }} >
+              <div style={{ display: "flex" }}>
 
-              
-            <FormControl component="fieldset" >
+
+                <FormControl component="fieldset" >
                   <RadioGroup
                     aria-label="searchCategory"
                     defaultValue="shop"
@@ -124,26 +130,79 @@ const SearchComponent = () => {
                     onChange={changeSearchCategory}
                     row
                     value={searchCategory}
-                    >
+                  >
                     <FormControlLabel value="shop" control={<Radio />} label="Shop" />
                     <FormControlLabel value="directory" control={<Radio />} label="Directory" />
                   </RadioGroup>
                 </FormControl>
-                    
-                </div>
+
+              </div>
             </Grid>
 
           </Grid>
 
           <Grid className={styles.iconWrapper}>
-            <Business className={styles.bannerIcon}  />
-            <ShoppingBasket className={styles.bannerIcon}   />
-            <HomeWorkRounded className={styles.bannerIcon}  /> 
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" ,margin:"0px 20px" }}>
+
+              <Link href='/sdfasdf'>
+
+                <Business size='large' className={styles.bannerIcon} style={{ fontSize: "50px" }} />
+
+              </Link>
+              <Typography variant='h6' style={{ color: "#fff" }}>
+
+              Directory
+              </Typography>
+            </div>
+
+
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" ,margin:"0px 20px"}}>
+
+              <Link href='/sdfasdf'>
+
+                <ShoppingBasket className={styles.bannerIcon} style={{ fontSize: "50px" }} />
+
+              </Link>
+              <Typography variant='h6' style={{ color: "#fff" }}>
+Shop
+              </Typography>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" ,margin:"0px 20px"}}>
+
+              <Link href='/sdfasdf'>
+
+                <Business size='large' className={styles.bannerIcon} style={{ fontSize: "50px" }} />
+
+              </Link>
+              <Typography variant='h6' style={{ color: "#fff" }}>
+
+             Services
+              </Typography>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",margin:"0px 20px" }}>
+
+              <Link href='/sdfasdf'>
+
+                <Business size='large' className={styles.bannerIcon} style={{ fontSize: "50px" }} />
+
+              </Link>
+              <Typography variant='h6' style={{ color: "#fff" }}>
+
+              Knowledge Base
+
+              </Typography>
+            </div>
+
+
+
+
+
           </Grid>
         </Grid>
 
         <div className="header-sec-link">
-          <a href="#sec1" className="custom-scroll-link"><ArrowDropDown style={{transform: "scale(1.3)"}} /></a>
+          <a href="#sec1" className="custom-scroll-link"><ArrowDropDown style={{ transform: "scale(1.3)" }} /></a>
         </div>
 
         {/* <img src={process.env.NEXT_PUBLIC_COMPANY_BANNER_URL}  /> */}

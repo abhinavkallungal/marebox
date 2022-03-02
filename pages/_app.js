@@ -7,6 +7,7 @@ import theme from '../theme';
 import { Box, Container, ThemeProvider } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
 
 function MyApp({ Component, pageProps }) {
   
@@ -40,9 +41,11 @@ function MyApp({ Component, pageProps }) {
      <Head/>
      <div>
        <div>
-          <Header id="#"/>
+          <Navbar/>
+        
        </div>
-       <Box pt={7}>
+       
+       <Box >
           <Component {...pageProps}/>
           <Copyright/>
        </Box>
