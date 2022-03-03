@@ -19,7 +19,9 @@ import {
   HomeWorkRounded,
   Search,
   ShoppingBasket,
-  ArrowDropDown
+  ArrowDropDown,
+  School,
+  MenuBook
 } from '@material-ui/icons';
 
 // import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
@@ -142,21 +144,21 @@ const SearchComponent = () => {
           </Grid>
 
           <Grid className={styles.iconWrapper}>
-            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" ,margin:"0px 20px" }}>
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", margin: "0px 20px" }}>
 
               <Link href='/sdfasdf'>
 
-                <Business size='large' className={styles.bannerIcon} style={{ fontSize: "50px" }} />
+                <MenuBook size='large' className={styles.bannerIcon} style={{ fontSize: "50px" }} />
 
               </Link>
               <Typography variant='h6' style={{ color: "#fff" }}>
 
-              Directory
+                Directory
               </Typography>
             </div>
 
 
-            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" ,margin:"0px 20px"}}>
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", margin: "0px 20px" }}>
 
               <Link href='/sdfasdf'>
 
@@ -164,10 +166,10 @@ const SearchComponent = () => {
 
               </Link>
               <Typography variant='h6' style={{ color: "#fff" }}>
-Shop
+                Shop
               </Typography>
             </div>
-            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" ,margin:"0px 20px"}}>
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", margin: "0px 20px" }}>
 
               <Link href='/sdfasdf'>
 
@@ -176,20 +178,20 @@ Shop
               </Link>
               <Typography variant='h6' style={{ color: "#fff" }}>
 
-             Services
+                Services
               </Typography>
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",margin:"0px 20px" }}>
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", margin: "0px 20px" }}>
 
               <Link href='/sdfasdf'>
 
-                <Business size='large' className={styles.bannerIcon} style={{ fontSize: "50px" }} />
+                <School size='large' className={styles.bannerIcon} style={{ fontSize: "50px" }} />
 
               </Link>
               <Typography variant='h6' style={{ color: "#fff" }}>
 
-              Knowledge Base
+                Knowledge Base
 
               </Typography>
             </div>
@@ -200,10 +202,10 @@ Shop
 
           </Grid>
         </Grid>
-
+        {/* 
         <div className="header-sec-link">
           <a href="#sec1" className="custom-scroll-link"><ArrowDropDown style={{ transform: "scale(1.3)" }} /></a>
-        </div>
+        </div> */}
 
         {/* <img src={process.env.NEXT_PUBLIC_COMPANY_BANNER_URL}  /> */}
       </Grid>

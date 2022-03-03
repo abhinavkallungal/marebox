@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }) {
      <Head/>
      <div>
        <div>
-          <Navbar/>
+          <Header/>
         
        </div>
        

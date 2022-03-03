@@ -199,6 +199,56 @@ const Header = () => {
               <MenuItem onClick={handleClose}><Link href="/kb"><a>Knowledge Base</a></Link></MenuItem>
             </Menu>
           </Grid>
+          <>
+                  <Grid item>
+                    <Link href="/f"><a><Favorite
+                      onClick={()=>{handleLinks('favorites')}}
+                      style={{
+                        backgroundColor:`${linkColor['favorites'] || 'inherit'}`,
+                        borderRadius: `50%`
+                      }}
+                    /></a></Link>
+                    <small> { auth.favs.length > 0 && auth.favs.length } </small>
+                  </Grid>
+
+                  <Grid item>
+                    <Link href="/cart"><a><ShoppingCart
+                      onClick={()=>{handleLinks('cart')}}
+                      style={{
+                        backgroundColor: `${linkColor['cart'] || 'inherit'}`,
+                        borderRadius: `50%`
+                      }}/>
+                    </a></Link>
+                    <small> { auth?.totalPrice > 0 && (auth?.totalPrice > 1000 ? `${auth.totalPrice/1000}K` : `${auth.totalPrice}`) } </small>
+                    
+                  </Grid>
+                    
+                    
+                  
+
+                  <Grid item>
+                    <PowerSettingsNew  onClick={() => auth.signOut()}/>
+                  </Grid>
+                  { auth?.userAuthData?.emailVerified && (
+                  auth?.userAuthData?.email === process.env.NEXT_PUBLIC_ADMIN ? (
+                    <Grid item>
+                      <Link href="/add">
+                        <a>
+                          <SupervisorAccount/>
+                        </a>
+                      </Link>
+                    </Grid>
+                    ) : (
+                    <Grid item>
+                      <Link href="/addlisting">
+                        <a>
+                          <AccountCircle/>
+                        </a>
+                      </Link>
+                    </Grid>
+                  )
+                  )}
+                </>
 
             { (auth.userAuthData && auth.userAuthData.emailVerified)
               ? (

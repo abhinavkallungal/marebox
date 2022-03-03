@@ -8,12 +8,11 @@ import {
   Badge,
   MenuItem,
   Menu,
-  Button
+  Button,
 } from "@material-ui/core";
 
-
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import MenuIcon from "@material-ui/icons/Menu";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import { Business, MenuBook,School,ShoppingBasket} from "@material-ui/icons";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
@@ -24,32 +23,31 @@ import Link from "next/link";
 
 const styles = (theme) => ({
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   title: {
     display: "block",
     [theme.breakpoints.up("sm")]: {
-      display: "block"
-    }
+      display: "block",
+    },
   },
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25)
+      backgroundColor: fade(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 10,
     width: "50%",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
-      width: "auto"
-      
-    }
+      width: "auto",
+    },
   },
   searchIcon: {
     width: theme.spacing(7),
@@ -58,31 +56,31 @@ const styles = (theme) => ({
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   inputRoot: {
-    color: "inherit"
+    color: "inherit",
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: 200
-    }
+      width: 200,
+    },
   },
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
-      display: "flex"
-    }
+      display: "flex",
+    },
   },
   sectionMobile: {
     display: "flex",
     [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
-  }
+      display: "none",
+    },
+  },
 });
 
 const ToolbarComponent = (props) => {
@@ -138,49 +136,42 @@ const ToolbarComponent = (props) => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-       
-            <MailIcon />
-        
+      <Link href="/directory">
+        <>
+        <IconButton aria-label="show 4 new mails" color="inherit" >
+          <MenuBook />
         </IconButton>
-        <p>Directory
-</p>
+        <p>Directory</p>
+        </>
+      </Link>
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
-       
-            <MailIcon />
-        
+          <ShoppingBasket />
         </IconButton>
         <p>Shop</p>
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
-       
-            <MailIcon />
-        
+          <Business />
         </IconButton>
         <p>Service</p>
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
-       
-            <MailIcon />
-        
+          <School />
         </IconButton>
         <p>Knowledge Base</p>
       </MenuItem>
-     
+
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
-       
-            <FavoriteIcon  />
-        
+          <FavoriteIcon />
         </IconButton>
         <p>Wish List</p>
       </MenuItem>
-     
-      <MenuItem >
+
+      <MenuItem>
         <IconButton
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
@@ -195,23 +186,27 @@ const ToolbarComponent = (props) => {
   );
 
   return (
-    <div className={classes.grow} style={{ backgroundColor:'#2E3E6F'}}>
-      <AppBar position="static" style={{ backgroundColor:'transparent', }}>
+    <div className={classes.grow} style={{ backgroundColor: "#2E3E6F" }}>
+      <AppBar position="static" style={{ backgroundColor: "transparent" }}>
         <Toolbar>
-         
-        {process.env.NEXT_PUBLIC_COMPANY_LOGO_URL && (
+          {process.env.NEXT_PUBLIC_COMPANY_LOGO_URL && (
             <Grid item>
-              <div onClick={() => {handleLinks('home')}}>
-              <Link href="/"><a>
-                  <img
-                    src={process.env.NEXT_PUBLIC_COMPANY_LOGO_URL}
-                    style={{ borderRadius: `50%`}}
-                    alt="Logo"
-                    width={35}
-                    height={35}
-                  />
-                  
-              </a></Link>
+              <div
+                onClick={() => {
+                  handleLinks("home");
+                }}
+              >
+                <Link href="/">
+                  <a>
+                    <img
+                      src={process.env.NEXT_PUBLIC_COMPANY_LOGO_URL}
+                      style={{ borderRadius: `50%` }}
+                      alt="Logo"
+                      width={35}
+                      height={35}
+                    />
+                  </a>
+                </Link>
               </div>
             </Grid>
           )}
@@ -223,7 +218,7 @@ const ToolbarComponent = (props) => {
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
-                input: classes.inputInput
+                input: classes.inputInput,
               }}
               inputProps={{ "aria-label": "search" }}
             />
@@ -231,27 +226,36 @@ const ToolbarComponent = (props) => {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Button aria-label="show 4 new mails" color="inherit">
-            <Link href="/directory"><a>Directory</a></Link>
+              <Link href="/directory">
+                <a>Directory</a>
+              </Link>
             </Button>
             <Button aria-label="show 4 new mails" color="inherit">
-            <Link href="/shop"><a>Shop</a></Link>
+              <Link href="/shop">
+                <a>Shop</a>
+              </Link>
             </Button>
             <Button aria-label="show 4 new mails" color="inherit">
-            <Link href="/services"><a>Services</a></Link>
+              <Link href="/services">
+                <a>Services</a>
+              </Link>
             </Button>
             <Button aria-label="show 4 new mails" color="inherit">
-            <Link href="/kb"><a>Knowledge Base</a></Link>
+              <Link href="/kb">
+                <a>Knowledge Base</a>
+              </Link>
             </Button>
-            
+
             <IconButton>
-                <Badge badgeContent={4}  color="primary">
-                    <FavoriteIcon style={{color:"#ffffff"}} />
-                </Badge>
+              <Badge badgeContent={4} color="primary">
+                <FavoriteIcon style={{ color: "#ffffff" }} />
+              </Badge>
             </IconButton>
             <Button aria-label="show 4 new mails" color="inherit">
-            <Link href="/login"><a>Log in</a></Link>
+              <Link href="/login">
+                <a>Log in</a>
+              </Link>
             </Button>
-          
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
