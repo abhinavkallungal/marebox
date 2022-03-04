@@ -18,7 +18,7 @@ function serviceCard({item}) {
 
             <Grid item xs={12} sm={6} md={3}   style={{padding:"10px"}} >
                 
-                <Link href={`/directory/${item?.id}`}>
+                <Link href={`/directory/${ item ? item.id :"fgdf4444"}`}>
                     <Card className='product-card'>
 
                         <CardMedia
